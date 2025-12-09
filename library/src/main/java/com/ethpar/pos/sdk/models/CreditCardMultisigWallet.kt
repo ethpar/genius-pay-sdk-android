@@ -12,6 +12,7 @@ data class MultisigWallet(
     val creationHash: String?
 )
 
+@Serializable
 data class Signer(
     val id: String,
     val address: String,
