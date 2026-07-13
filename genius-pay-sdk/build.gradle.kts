@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.ethpar.pos.sdk"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 24
@@ -46,7 +46,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components.getByName("release"))
                 groupId = "com.github.ethpar"
-                artifactId = "pos-sdk-android"
+                artifactId = "genius-pay-sdk-android"
                 version = "1.0.0"
             }
         }

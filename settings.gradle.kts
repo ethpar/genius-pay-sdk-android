@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PosSDK"
-include(":library")
+rootProject.name = "genius-pay-sdk-android"
+include(":genius-pay-sdk")
  
