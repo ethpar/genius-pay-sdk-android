@@ -94,8 +94,73 @@ scope.launch {
 
 ---
 
+## GeniusPayClient
+
+`GeniusPayClient` wraps the GeniusPay POS terminal API — terminal enrollment, fee calculation, card transaction preflight/confirmation/cancellation, stablecoin sweep/redeem, and merchant wallet/payment status lookups. It follows the same builder pattern as `WalletSdk`.
+
+### 1. Initializing the client
+
+```kotlin
+import com.ethpar.pos.sdk.geniuspay.GeniusPayClient
+
+val geniusPayClient = GeniusPayClient.Builder()
+    .baseUrl("https://api.dev.rampatm.net/ramp/") // Set target environment URL
+    .build()
+```
+
+### 2. Calling API methods
+
+```kotlin
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import com.ethpar.pos.sdk.geniuspay.models.EnrollmentRequest
+import com.ethpar.pos.sdk.geniuspay.models.AddFeesRequest
+import com.ethpar.pos.sdk.geniuspay.models.PreflightRequest
+
+val scope = CoroutineScope(Dispatchers.Main)
+
+scope.launch {
+    try {
+        // 1. Enroll the terminal to obtain signing keys
+        val enrollment = geniusPayClient.enroll(
+            EnrollmentRequest(
+                terminalSerialNumber = "NEX82-00123456",
+                merchantId = "merchant_abc123",
+                activationCode = "ACT-98765"
+            )
+        )
+        println("Signing key: ${enrollment.signingKeyId}")
+
+        // 2. Calculate fees for a sale
+        val fees = geniusPayClient.addFees(AddFeesRequest(totalSale = "100.00"))
+        println("Total with fees: ${fees.totalWithFees}")
+
+        // 3. Pre-authorize the transaction
+        val preflight = geniusPayClient.preflight(
+            PreflightRequest(
+                totalWithFees = fees.totalWithFees,
+                totalSale = fees.totalSale,
+                merchantJwt = "<signed-jwt>",
+                terminalId = "NEX82-00123456"
+            )
+        )
+        println("Preflight status: ${preflight.status}")
+
+    } catch (e: Exception) {
+        // Handle network errors, serialization errors, or API-specific failures
+        e.printStackTrace()
+    }
+}
+```
+
+---
+
 ## Project Structure
 
 - `WalletSdk`: The single, main entry point of the SDK. Built with a `Builder` class.
 - `WalletApi`: The Retrofit HTTP service interface detailing all REST endpoints.
 - `models/`: High-quality Kotlinx-serialization data transfer objects (DTOs) for requests and responses.
+- `geniuspay/GeniusPayClient`: Entry point for the GeniusPay POS terminal API. Built with a `Builder` class.
+- `geniuspay/GeniusPayApi`: The Retrofit HTTP service interface for the GeniusPay endpoints.
+- `geniuspay/models/`: Kotlinx-serialization DTOs for GeniusPay requests and responses, one file per endpoint.
