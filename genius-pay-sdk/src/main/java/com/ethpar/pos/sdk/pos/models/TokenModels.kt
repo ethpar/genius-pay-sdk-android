@@ -4,7 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class TokenRequest(
-
     val client_assertion_type: String,
     val grant_type: String,
     val client_assertion: String,

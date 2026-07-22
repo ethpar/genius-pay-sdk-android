@@ -9,8 +9,8 @@ data class AddFeesRequest(
 
 @Serializable
 data class AddFeesResponse(
-    val totalSale: String,
-    val convenienceFee: String,
-    val processingFee: String,
-    val totalWithFees: String
+    val totalSale: Float,
+    val convenienceFee: Float,
+    val processingFee: Float,
+    val totalWithFees: Float
 )

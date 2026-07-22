@@ -1,4 +1,4 @@
-package com.ethpar.pos.sdk.models
+package com.ethpar.pos.sdk.wallet.models
 
 data class MerchantData(
     val name: String,

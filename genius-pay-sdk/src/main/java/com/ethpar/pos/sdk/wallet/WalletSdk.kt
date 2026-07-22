@@ -1,4 +1,4 @@
-package com.ethpar.pos.sdk
+package com.ethpar.pos.sdk.wallet
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
