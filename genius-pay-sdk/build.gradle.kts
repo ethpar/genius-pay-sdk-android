@@ -57,10 +57,12 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidx.annotation)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.retrofit)
     implementation(libs.logging.interceptor)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.java.jwt)
 }

@@ -1,4 +1,4 @@
-package com.ethpar.pos.sdk.geniuspay.models
+package com.ethpar.pos.sdk.pos.models
 
 import kotlinx.serialization.Serializable
 

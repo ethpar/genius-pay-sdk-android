@@ -1,27 +1,27 @@
-package com.ethpar.pos.sdk.geniuspay
+package com.ethpar.pos.sdk.pos
 
-import com.ethpar.pos.sdk.geniuspay.models.AddFeesRequest
-import com.ethpar.pos.sdk.geniuspay.models.AddFeesResponse
-import com.ethpar.pos.sdk.geniuspay.models.CancelRequest
-import com.ethpar.pos.sdk.geniuspay.models.CancelResponse
-import com.ethpar.pos.sdk.geniuspay.models.ConfirmationRequest
-import com.ethpar.pos.sdk.geniuspay.models.ConfirmationResponse
-import com.ethpar.pos.sdk.geniuspay.models.EnrollmentRequest
-import com.ethpar.pos.sdk.geniuspay.models.EnrollmentResponse
-import com.ethpar.pos.sdk.geniuspay.models.MerchantAddressResponse
-import com.ethpar.pos.sdk.geniuspay.models.PaymentStatusResponse
-import com.ethpar.pos.sdk.geniuspay.models.PreflightRequest
-import com.ethpar.pos.sdk.geniuspay.models.PreflightResponse
-import com.ethpar.pos.sdk.geniuspay.models.RedeemRequest
-import com.ethpar.pos.sdk.geniuspay.models.RedeemResponse
-import com.ethpar.pos.sdk.geniuspay.models.SweepRequest
-import com.ethpar.pos.sdk.geniuspay.models.SweepResponse
+import com.ethpar.pos.sdk.pos.models.AddFeesRequest
+import com.ethpar.pos.sdk.pos.models.AddFeesResponse
+import com.ethpar.pos.sdk.pos.models.CancelRequest
+import com.ethpar.pos.sdk.pos.models.CancelResponse
+import com.ethpar.pos.sdk.pos.models.ConfirmationRequest
+import com.ethpar.pos.sdk.pos.models.ConfirmationResponse
+import com.ethpar.pos.sdk.pos.models.EnrollmentRequest
+import com.ethpar.pos.sdk.pos.models.EnrollmentResponse
+import com.ethpar.pos.sdk.pos.models.MerchantAddressResponse
+import com.ethpar.pos.sdk.pos.models.PaymentStatusResponse
+import com.ethpar.pos.sdk.pos.models.PreflightRequest
+import com.ethpar.pos.sdk.pos.models.PreflightResponse
+import com.ethpar.pos.sdk.pos.models.RedeemRequest
+import com.ethpar.pos.sdk.pos.models.RedeemResponse
+import com.ethpar.pos.sdk.pos.models.SweepRequest
+import com.ethpar.pos.sdk.pos.models.SweepResponse
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
 
-interface GeniusPayApi {
+interface PosApi {
     @POST("api/v1/enrollment")
     suspend fun enroll(@Body params: EnrollmentRequest): EnrollmentResponse
 
