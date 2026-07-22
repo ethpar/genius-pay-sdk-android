@@ -1,5 +1,6 @@
 package com.ethpar.pos.sdk.pos.models
 
+import com.ethpar.pos.sdk.util.NumberAsFloatSerializer
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -9,8 +10,8 @@ data class AddFeesRequest(
 
 @Serializable
 data class AddFeesResponse(
-    val totalSale: Float,
-    val convenienceFee: Float,
-    val processingFee: Float,
-    val totalWithFees: Float
+    @Serializable(with = NumberAsFloatSerializer::class) val totalSale: Float,
+    @Serializable(with = NumberAsFloatSerializer::class) val convenienceFee: Float,
+    @Serializable(with = NumberAsFloatSerializer::class) val processingFee: Float,
+    @Serializable(with = NumberAsFloatSerializer::class) val totalWithFees: Float
 )
