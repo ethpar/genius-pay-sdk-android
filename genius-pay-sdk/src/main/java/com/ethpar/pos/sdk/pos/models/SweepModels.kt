@@ -1,5 +1,6 @@
 package com.ethpar.pos.sdk.pos.models
 
+import com.ethpar.pos.sdk.util.NumberAsFloatSerializer
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -12,8 +13,8 @@ data class SweepRequest(
 @Serializable
 data class SweepResponse(
     val status: String,
-    val amountSwept: String,
-    val merchantBalance: String,
-    val transactionId: String,
+    @Serializable(with = NumberAsFloatSerializer::class) val amountSwept: Float,
+    @Serializable(with = NumberAsFloatSerializer::class) val merchantBalance: Float,
+    val transactionId: Int,
     val blockchainTxHash: String
 )
